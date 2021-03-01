@@ -1,27 +1,25 @@
-# Template repository
+# Save the Puppy!
 
-Template repository for the Jetpack Compose [#AndroidDevChallenge](https://developer.android.com/dev-challenge).
 
-## Getting started
-Copy this repository by pressing the "Use this template" button in Github.
-Clone your repository and open it in the latest [Android Studio (Canary build)](https://developer.android.com/studio/preview).
+![Workflow result](https://github.com/McSnowflake/android-dev-challenge-compose/workflows/Check/badge.svg)
 
-## Submission requirements
-- Follow the challenge description on the project website: [developer.android.com/dev-challenge](https://developer.android.com/dev-challenge)
-- All UI should be written using Jetpack Compose
-- The Github Actions workflow should complete successfully
-- Include two screenshots of your submission in the [results](results) folder. The names should be
-  screenshot_1.png and screenshot_2.png.
-- Include a screen record of your submission in the [results](results) folder. The name should be
-  video.mp4
-- Replace the contents of [README.md](README.md) with the contents of [README-template.md](README-template.md) and fill out the template.
 
-## Code formatting
-The CI uses [Spotless](https://github.com/diffplug/spotless) to check if your code is formatted correctly and contains the right licenses.
-Internally, Spotless uses [ktlint](https://github.com/pinterest/ktlint) to check the formatting of your code.
-To set up ktlint correctly with Android Studio, follow one of the [listed setup options](https://github.com/pinterest/ktlint#-with-intellij-idea).
+## :scroll: Description
+It's a small (mockup) app that helps you find a new puppy companion. It shows a list where you can filter by traits and select your favorites until the final decision. By clicking on a puppy card, you get a detail screen with more photos and a more ... details :)
 
-Before committing your code, run `./gradlew app:spotlessApply` to automatically format your code.
+Photo links are from [www.pexels.com](https://www.pexels.com).
+
+## :bulb: Motivation and Context
+This is my submission to the [Jetpack Compose Dev Challenge](https://developer.android.com/dev-challenge). It was learning by doing for me and not all is perfect yet (with my app; compose is pretty amazing despite being in beta).
+
+Theming (incl. dark mode) was a breeze. It's nice how compose directly translates to material design.
+
+I had a harder time figuring out navigation and state handling. I ended up using MutableState directly in the ViewModel. LiveDate and Flow didn't want to play nice.
+Also I used routing, which worked, but I couldn't figure out how to animate transitions that way.
+
+
+## :camera_flash: Screenshots
+<img src="/results/screenshot_1.png" width="260">&emsp;<img src="/results/screenshot_2.png" width="260">;<img src="/results/screenshot_3.png" width="260">;<img src="/results/screenshot_4.png" width="260">
 
 ## License
 ```
