@@ -1,7 +1,31 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.ui.puppy
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.aspectRatio
+import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.paddingFromBaseline
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
 import androidx.compose.material.Text
@@ -14,17 +38,17 @@ import androidx.compose.ui.text.font.FontWeight.Companion.Bold
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.androiddevchallenge.data.Puppy
-import com.example.androiddevchallenge.data.ViewState
 import com.example.androiddevchallenge.ui.misc.Image
 import com.example.androiddevchallenge.ui.misc.LikeButton
+import java.util.UUID
 
 @Composable
-fun PuppyItem(puppy: Puppy, viewState: ViewState) = Card(
+fun PuppyItem(puppy: Puppy, onSelect: (UUID) -> Unit) = Card(
     elevation = 1.dp,
     modifier = Modifier
         .fillMaxWidth()
         .height(96.dp)
-        .clickable { viewState.selectPuppy(puppy) }
+        .clickable { onSelect(puppy.id) }
 ) {
     Row(
         modifier = Modifier.fillMaxSize(),

@@ -80,6 +80,7 @@ dependencies {
     implementation "dev.chrisbanes.accompanist:accompanist-coil:0.6.1"
     implementation("io.coil-kt:coil:1.1.1")
     implementation 'com.beust:klaxon:5.4'
+    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.3.0'
 
     testImplementation 'junit:junit:4.13.2'
 

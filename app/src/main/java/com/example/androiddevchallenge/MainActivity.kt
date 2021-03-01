@@ -17,52 +17,52 @@ package com.example.androiddevchallenge
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.ExperimentalFoundationApi
-import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import androidx.navigation.compose.*
-import com.example.androiddevchallenge.data.Puppy
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.compose.NavHost
+import androidx.navigation.compose.composable
+import androidx.navigation.compose.navigate
+import androidx.navigation.compose.popUpTo
+import androidx.navigation.compose.rememberNavController
 import com.example.androiddevchallenge.data.ViewState
 import com.example.androiddevchallenge.ui.misc.WelcomeScreen
 import com.example.androiddevchallenge.ui.puppy.PuppyDetail
 import com.example.androiddevchallenge.ui.puppy.PuppyList
 import com.example.androiddevchallenge.ui.theme.MyTheme
-import java.io.File
-import java.io.InputStream
+import java.util.UUID
 
 const val PUPPY_ID_KEY = "puppyId"
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewState by viewModels<ViewState>()
+
     @ExperimentalFoundationApi
     @ExperimentalAnimationApi
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        viewState.loadPuppies(assets.open("puppies.json"))
 
         setContent {
             MyTheme {
-                MyApp(assets.open("puppies.json"))
+                MyApp(viewState)
             }
         }
     }
-
 }
-
 
 // Start building your app here!
 @ExperimentalFoundationApi
 @ExperimentalAnimationApi
 @Composable
-fun MyApp(puppyData: InputStream) {
+fun MyApp(viewState: ViewState = viewModel()) {
 
     val navController = rememberNavController()
-    val viewState = remember { ViewState(puppyData, navController) }
 
     NavHost(navController, startDestination = "welcomeScreen") {
         composable("welcomeScreen") {
@@ -74,29 +74,39 @@ fun MyApp(puppyData: InputStream) {
                 }
             }
         }
-        composable("puppyList") { PuppyList(viewState) }
-        composable("puppyDetail") {
-            PuppyDetail(viewState, modifier = Modifier.fillMaxSize())
+        composable("puppyList") {
+            PuppyList(viewState) { navController.navigate("puppyDetail/$it") }
+        }
+        composable("puppyDetail/{$PUPPY_ID_KEY}") { backStackEntry ->
+            val puppyId = backStackEntry.arguments?.getString(PUPPY_ID_KEY)
+            if (puppyId == null)
+                navController.popBackStack()
+            else {
+                viewState.selectedPuppy.value =
+                    viewState.puppies.find { it.id == UUID.fromString(puppyId) }
+                PuppyDetail(viewState) { navController.popBackStack() }
+            }
         }
     }
 }
 
-@ExperimentalFoundationApi
-@ExperimentalAnimationApi
-@Preview("Light Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun LightPreview() {
-    MyTheme {
-        MyApp(File("app/src/main/assets/puppies.json").inputStream())
-    }
-}
-
-@ExperimentalFoundationApi
-@ExperimentalAnimationApi
-@Preview("Dark Theme", widthDp = 360, heightDp = 640)
-@Composable
-fun DarkPreview() {
-    MyTheme(darkTheme = true) {
-        MyApp(File("app/src/main/assets/puppies.json").inputStream())
-    }
-}
+// @ExperimentalFoundationApi
+// @ExperimentalAnimationApi
+// @Preview("Light Theme", widthDp = 360, heightDp = 640)
+// @Composable
+// fun LightPreview() {
+//    MyTheme {
+//        MyApp()
+//    }
+// }
+//
+// // File("app/src/main/assets/puppies.json").inputStream()
+// @ExperimentalFoundationApi
+// @ExperimentalAnimationApi
+// @Preview("Dark Theme", widthDp = 360, heightDp = 640)
+// @Composable
+// fun DarkPreview() {
+//    MyTheme(darkTheme = true) {
+//        MyApp()
+//    }
+// }

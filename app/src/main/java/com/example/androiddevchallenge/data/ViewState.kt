@@ -1,44 +1,43 @@
+/*
+ * Copyright 2021 The Android Open Source Project
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     https://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ */
 package com.example.androiddevchallenge.data
 
-import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateListOf
 import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.snapshots.SnapshotStateList
-import androidx.compose.runtime.toMutableStateList
 import androidx.lifecycle.ViewModel
-import androidx.navigation.NavHostController
-import androidx.navigation.compose.navigate
 import com.beust.klaxon.Klaxon
 import java.io.InputStream
 
-class ViewState(puppiesData: InputStream, private val navController: NavHostController) :
-    ViewModel() {
-    val puppies = Klaxon().converter(urlConverter).parseArray<Puppy>(puppiesData)!!
-    val selectedTraits: SnapshotStateList<Trait> = puppies
-        .flatMap { it.traits }
-        .distinct()
-        .map { Trait(it) }
-        .toMutableStateList()
-    val showOnlyFavorites: MutableState<Boolean> = mutableStateOf(false)
-    val showFilters: MutableState<Boolean> = mutableStateOf(false)
+class ViewState() : ViewModel() {
 
-    fun toggleShowFavoritesOnly(state: Boolean) {
-        showOnlyFavorites.value = state
-    }
+    private var isInitialized = false
 
-    fun toggleShowFilters() {
-        showFilters.value = !showFilters.value
-    }
+    val puppies = mutableStateListOf<Puppy>()
+    val selectedTraits = mutableStateListOf<Trait>()
+    val selectedPuppy = mutableStateOf<Puppy?>(null)
+    var showOnlyFavorites = mutableStateOf(false)
+    val showFilters = mutableStateOf(false)
 
-    private val selectedPuppy = mutableStateOf<Puppy?>(null)
-
-    fun getSelectedPuppy() = selectedPuppy.value!!
-    fun selectPuppy(puppy: Puppy) {
-        selectedPuppy.value = puppy
-        navController.navigate("puppyDetail")
-    }
-
-    fun deselectPuppy() {
-        selectedPuppy.value = null
-        navController.popBackStack()
+    fun loadPuppies(puppyList: InputStream) {
+        if (!isInitialized) {
+            val parsedPuppies =
+                Klaxon().converter(urlConverter).parseArray<Puppy>(puppyList) ?: emptyList()
+            puppies.addAll(parsedPuppies)
+            selectedTraits.addAll(parsedPuppies.flatMap { it.traits }.distinct().map { Trait(it) })
+            isInitialized = true
+        }
     }
 }

@@ -15,10 +15,23 @@
  */
 package com.example.androiddevchallenge.data
 
-import androidx.compose.runtime.MutableState
-import androidx.compose.runtime.mutableStateOf
+import com.beust.klaxon.Klaxon
+import kotlinx.coroutines.ExperimentalCoroutinesApi
+import kotlinx.coroutines.FlowPreview
+import kotlinx.coroutines.channels.BroadcastChannel
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.asFlow
+import java.io.InputStream
 
-data class Trait(
-    val name: String,
-    val isSelected: MutableState<Boolean> = mutableStateOf(false)
-)
+@ExperimentalCoroutinesApi
+object PuppyService {
+
+    private val puppyBroadcast = BroadcastChannel<List<Puppy>>(1)
+
+    @FlowPreview
+    val puppies: Flow<List<Puppy>>
+        get() = puppyBroadcast.asFlow()
+
+    suspend fun load(puppyList: InputStream) =
+        puppyBroadcast.send(Klaxon().converter(urlConverter).parseArray(puppyList)!!)
+}
