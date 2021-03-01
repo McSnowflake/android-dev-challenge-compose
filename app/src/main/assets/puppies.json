@@ -1,0 +1,139 @@
+[
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/1458916/pexels-photo-1458916.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
+      "https://images.pexels.com/photos/1458908/pexels-photo-1458908.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/1458909/pexels-photo-1458909.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940"
+    ],
+    "name": "Tobias",
+    "breed": "Maltese",
+    "traits": [
+      "black&white",
+      "curious"
+    ],
+    "age": 7
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/3478875/pexels-photo-3478875.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/3478876/pexels-photo-3478876.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/3726314/pexels-photo-3726314.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+    ],
+    "name": "Julie",
+    "breed": "Siberian Husky",
+    "traits": [
+      "brave",
+      "curious",
+      "friendly"
+    ],
+    "age": 5
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/5430713/pexels-photo-5430713.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/5430715/pexels-photo-5430715.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+    ],
+    "name": "Lizzy",
+    "breed": "Bernese",
+    "traits": [
+      "relaxed",
+      "faithful",
+      "friendly"
+    ],
+    "age": 8
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/4193995/pexels-photo-4193995.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    ],
+    "name": "Fritz",
+    "breed": "Dachshund",
+    "traits": [
+      "thoughtful",
+      "adventurous"
+    ],
+    "age": 6
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/3860304/pexels-photo-3860304.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/3860312/pexels-photo-3860312.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/3860308/pexels-photo-3860308.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/3860306/pexels-photo-3860306.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    ],
+    "name": "Bailey",
+    "breed": "unknown",
+    "traits": [
+      "playful",
+      "relaxed"
+    ],
+    "age": 6
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/1420405/pexels-photo-1420405.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+    ],
+    "name": "Benji",
+    "breed": "Yorkshire terrier",
+    "traits": [
+      "self confident",
+      "vivid",
+      "smart"
+    ],
+    "age": 8
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/1156447/pexels-photo-1156447.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260"
+    ],
+    "name": "Tylor",
+    "breed": "unknown",
+    "traits": [
+      "curious",
+      "jivey"
+    ],
+    "age": 6
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/1790444/pexels-photo-1790444.jpeg?auto=compress&cs=tinysrgb&dpr=3&h=750&w=1260",
+      "https://images.pexels.com/photos/1790446/pexels-photo-1790446.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/1790445/pexels-photo-1790445.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    ],
+    "name": "Evi",
+    "breed": "Labrador",
+    "traits": [
+      "big-hearted",
+      "sensitive"
+    ],
+    "age": 7
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/3908762/pexels-photo-3908762.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/3908764/pexels-photo-3908764.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/3908763/pexels-photo-3908763.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    ],
+    "name": "Sally",
+    "breed": "unknown",
+    "traits": [
+      "funny",
+      "keen"
+    ],
+    "age": 6
+  },
+  {
+    "imgUrls": [
+      "https://images.pexels.com/photos/3877901/pexels-photo-3877901.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/3908804/pexels-photo-3908804.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260",
+      "https://images.pexels.com/photos/3908805/pexels-photo-3908805.jpeg?auto=compress&cs=tinysrgb&h=750&w=1260"
+    ],
+    "name": "Amos",
+    "breed": "unknown",
+    "traits": [
+      "easygoing",
+      "kind"
+    ],
+    "age": 4
+  }
+]
